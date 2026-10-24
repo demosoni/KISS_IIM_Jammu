@@ -272,15 +272,15 @@ It is intended to demonstrate data-stream fusion, time-series prediction, histor
 It must not be used for clinical decisions, medication changes, emergency triage or patient treatment. All forecasts and hypothetical scenarios require independent validation before any clinical use can be considered.
 
 
-You can also run it in google colab by following the steps:
+## You can also run it in google colab by following the steps:
 Step 1: Upload Your all Files to Google Colab.
 Step 2: Run Phase 2 Training in Colab (Copy-Paste into Cell 1)
 
 "
-# 1. Install/upgrade required libraries in Colab
+ 1. Install/upgrade required libraries in Colab
 !pip install -q "scikit-learn>=1.6.0" pandas numpy scipy threadpoolctl streamlit plotly
 
-# 2. Move the uploaded CSVs into the 'data/' folder expected by the script
+ 2. Move the uploaded CSVs into the 'data/' folder expected by the script
 import os, shutil
 os.makedirs("data", exist_ok=True)
 os.makedirs("outputs", exist_ok=True)
@@ -290,7 +290,7 @@ if os.path.exists("patients_ehr.csv"):
 if os.path.exists("wearable_timeseries.csv"):
     shutil.copy("wearable_timeseries.csv", "data/wearable_timeseries.csv")
 
-# 3. Run the Phase 2 Digital Twin Engine
+ 3. Run the Phase 2 Digital Twin Engine
 !python 2_train_twin_engine.py --data-dir data --output-dir outputs
 "
 
@@ -301,7 +301,7 @@ import pickle
 import pandas as pd
 from importlib.machinery import SourceFileLoader
 
-# Load the functions from your script and the trained model bundle
+ Load the functions from your script and the trained model bundle
 eng = SourceFileLoader("eng", "2_train_twin_engine.py").load_module()
 with open("outputs/twin_model_bundle.pkl", "rb") as f:
     bundle = pickle.load(f)
@@ -309,15 +309,15 @@ with open("outputs/twin_model_bundle.pkl", "rb") as f:
 ehr = pd.read_csv("data/patients_ehr.csv", keep_default_na=False, na_values=[''])
 ts = pd.read_csv("data/wearable_timeseries.csv", keep_default_na=False, na_values=[''])
 
-# Select Archetype PT_001 (High Carb Spiker) at Lunch (Index 150: 117.65g High-GI meal)
+ Select Archetype PT_001 (High Carb Spiker) at Lunch (Index 150: 117.65g High-GI meal)
 pt1_ehr = ehr[ehr.patient_id == "PT_001"].iloc[0]
 pt1_ts = ts[ts.patient_id == "PT_001"].reset_index(drop=True)
 hist_baseline = pt1_ts.iloc[:151].copy()
 
-# 1. Baseline Prediction (No Intervention)
+ 1. Baseline Prediction (No Intervention)
 base_out = eng.predict_latest(bundle, pt1_ehr, hist_baseline)
 
-# 2. Counterfactual "What-If" Intervention (-40g Carbs, Swap to Low GI, +30m Brisk Walk)
+ 2. Counterfactual "What-If" Intervention (-40g Carbs, Swap to Low GI, +30m Brisk Walk)
 hist_whatif = hist_baseline.copy()
 hist_whatif.loc[hist_whatif.index[-1], "meal_carbs_g"] -= 40.0
 hist_whatif.loc[hist_whatif.index[-1], "meal_gi_tier"] = "Low"
