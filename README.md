@@ -155,7 +155,7 @@ KISS_IIM_Jammu/
 │   ├── evaluation_metrics_report.md
 │   ├── phase1_quality_audit.md
 │   └── demo_video_link.txt
-└── presentation.pdf
+└── KISS_IIM_Jammu_GLYCEMIC_TWIN.pdf (presentation)
 ```
 
 ## 11. Installation and Execution
@@ -274,6 +274,8 @@ It must not be used for clinical decisions, medication changes, emergency triage
 
 ## You can also run it in google colab by following the steps:
 Step 1: Upload Your all Files to Google Colab.
+
+
 Step 2: Run Phase 2 Training in Colab (Copy-Paste into Cell 1)
 
 "
