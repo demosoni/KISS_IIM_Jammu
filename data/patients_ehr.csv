@@ -1,0 +1,41 @@
+patient_id,archetype,age_years,sex_at_birth,population_context,t2d_duration_years,baseline_hba1c,bmi,fasting_glucose_mgdl,fasting_insulin_uiu_ml,homa_ir,c_peptide_ng_ml,egfr_ml_min,genetic_tcf7l2_risk,med_regimen,is_synthetic
+PT_001,High Carb Spiker,45,F,India_synthetic,6.0,8.3,31.2,144.0,17.8,6.329,3.1,94.0,2,metformin,1
+PT_002,High Stress / Poor Sleep Executive,42,M,India_synthetic,5.0,7.6,27.8,132.0,13.5,4.4,2.5,101.0,1,metformin,1
+PT_003,Advanced T2D + CKD,68,M,India_synthetic,21.0,9.4,29.4,179.0,5.8,2.563,1.6,26.0,1,basal_insulin,1
+PT_004,Sensor Dropout Safety Demo,52,M,India_synthetic,7.0,7.4,26.7,126.0,10.5,3.267,2.6,88.0,0,metformin_dpp4,1
+PT_005,Mixed T2D phenotype,49,F,India_synthetic,4.4,7.97,25.86,148.28,11.32,4.145,3.12,90.08,1,metformin_dpp4,1
+PT_006,Mixed T2D phenotype,39,M,India_synthetic,12.7,7.15,26.21,120.78,14.12,4.211,1.8,87.65,0,metformin_dpp4,1
+PT_007,Mixed T2D phenotype,78,M,India_synthetic,14.4,6.66,24.63,110.84,7.02,1.921,1.64,73.54,1,lifestyle_only,1
+PT_008,Mixed T2D phenotype,46,F,India_synthetic,9.2,7.42,33.56,121.96,13.02,3.921,2.4,69.47,2,basal_insulin,1
+PT_009,Mixed T2D phenotype,54,M,India_synthetic,6.9,8.27,27.22,141.81,17.27,6.047,1.87,88.21,1,metformin_dpp4,1
+PT_010,Mixed T2D phenotype,50,M,India_synthetic,8.6,8.81,23.91,159.95,7.28,2.875,2.41,104.01,1,metformin_dpp4,1
+PT_011,Mixed T2D phenotype,75,F,India_synthetic,14.1,6.63,21.0,115.47,3.0,0.855,1.47,92.45,0,metformin,1
+PT_012,Mixed T2D phenotype,31,M,India_synthetic,13.0,7.26,24.04,113.06,4.51,1.259,0.96,74.86,0,metformin_dpp4,1
+PT_013,Mixed T2D phenotype,36,M,India_synthetic,6.4,8.22,27.28,137.29,12.58,4.264,2.63,120.0,0,metformin,1
+PT_014,Mixed T2D phenotype,50,F,India_synthetic,11.4,7.66,23.72,137.44,5.61,1.904,1.88,78.04,0,metformin_dpp4,1
+PT_015,Mixed T2D phenotype,47,F,India_synthetic,6.1,8.17,35.97,113.11,16.09,4.494,2.43,80.56,0,metformin,1
+PT_016,Mixed T2D phenotype,37,M,India_synthetic,1.0,8.57,29.33,152.99,10.57,3.993,2.44,92.82,0,metformin_dpp4,1
+PT_017,Mixed T2D phenotype,32,M,India_synthetic,2.8,6.93,34.32,129.36,9.18,2.932,2.3,114.8,0,metformin_dpp4,1
+PT_018,Mixed T2D phenotype,74,M,India_synthetic,1.1,7.22,27.03,144.51,8.77,3.129,2.43,69.88,1,metformin,1
+PT_019,Mixed T2D phenotype,52,M,India_synthetic,11.0,6.21,30.43,108.74,9.69,2.602,1.53,86.58,2,basal_insulin,1
+PT_020,Mixed T2D phenotype,64,F,India_synthetic,11.7,6.2,23.14,120.51,7.87,2.342,2.56,63.96,0,metformin,1
+PT_021,Mixed T2D phenotype,58,M,India_synthetic,15.3,7.29,30.68,141.97,4.99,1.749,0.91,89.44,1,metformin,1
+PT_022,Mixed T2D phenotype,48,F,India_synthetic,11.8,9.06,22.38,156.25,5.24,2.022,1.36,89.26,0,metformin_dpp4,1
+PT_023,Mixed T2D phenotype,50,M,India_synthetic,1.0,7.54,23.3,131.85,6.65,2.165,2.14,81.75,1,metformin,1
+PT_024,Mixed T2D phenotype,71,F,India_synthetic,1.2,7.0,29.07,109.47,17.46,4.719,3.4,65.34,1,metformin,1
+PT_025,Mixed T2D phenotype,35,M,India_synthetic,11.0,8.28,29.41,148.96,8.42,3.097,2.41,95.81,1,metformin,1
+PT_026,Mixed T2D phenotype,72,F,India_synthetic,1.0,7.21,33.07,128.47,7.59,2.408,3.36,54.5,0,metformin_dpp4,1
+PT_027,Mixed T2D phenotype,32,F,India_synthetic,1.0,8.15,28.21,132.93,10.94,3.591,1.87,114.61,0,metformin,1
+PT_028,Mixed T2D phenotype,37,F,India_synthetic,12.3,6.2,24.9,128.03,6.09,1.925,1.47,116.15,1,metformin_dpp4,1
+PT_029,Mixed T2D phenotype,60,M,India_synthetic,13.6,7.51,24.3,127.46,8.64,2.719,1.32,71.07,0,metformin,1
+PT_030,Mixed T2D phenotype,59,F,India_synthetic,6.2,6.87,28.8,123.92,14.23,4.354,3.22,88.57,1,basal_insulin,1
+PT_031,Mixed T2D phenotype,74,M,India_synthetic,1.0,6.47,25.17,109.9,9.19,2.494,2.78,92.3,0,basal_insulin,1
+PT_032,Mixed T2D phenotype,39,M,India_synthetic,10.0,6.2,30.66,104.09,15.93,4.094,3.19,83.5,0,metformin,1
+PT_033,Mixed T2D phenotype,56,M,India_synthetic,10.3,9.14,25.62,168.35,11.4,4.739,2.64,74.06,0,metformin_dpp4,1
+PT_034,Mixed T2D phenotype,54,F,India_synthetic,3.6,7.96,30.18,135.94,18.49,6.206,3.14,87.43,1,metformin,1
+PT_035,Mixed T2D phenotype,52,M,India_synthetic,14.0,6.87,25.78,117.81,5.0,1.454,0.59,92.94,1,metformin_dpp4,1
+PT_036,Mixed T2D phenotype,71,M,India_synthetic,13.8,7.58,33.31,134.35,15.96,5.294,1.52,66.75,1,metformin_dpp4,1
+PT_037,Mixed T2D phenotype,35,F,India_synthetic,2.3,8.28,27.92,143.85,7.41,2.632,2.64,120.0,2,metformin_dpp4,1
+PT_038,Mixed T2D phenotype,72,M,India_synthetic,6.0,6.65,29.87,117.02,10.6,3.063,2.03,105.73,0,metformin_dpp4,1
+PT_039,Mixed T2D phenotype,66,M,India_synthetic,14.0,7.65,29.8,146.5,9.47,3.426,2.23,90.1,0,basal_insulin,1
+PT_040,Mixed T2D phenotype,43,M,India_synthetic,2.0,10.2,29.15,174.72,14.53,6.268,2.38,94.14,1,metformin,1
