@@ -270,3 +270,82 @@ GLYCEMIC TWIN is an educational and research-stage proof of concept created for 
 It is intended to demonstrate data-stream fusion, time-series prediction, historical patient replay and a physician-oriented interface.
 
 It must not be used for clinical decisions, medication changes, emergency triage or patient treatment. All forecasts and hypothetical scenarios require independent validation before any clinical use can be considered.
+
+
+You can also run it in google colab by following the steps:
+Step 1: Upload Your all Files to Google Colab.
+Step 2: Run Phase 2 Training in Colab (Copy-Paste into Cell 1)
+
+"
+# 1. Install/upgrade required libraries in Colab
+!pip install -q "scikit-learn>=1.6.0" pandas numpy scipy threadpoolctl streamlit plotly
+
+# 2. Move the uploaded CSVs into the 'data/' folder expected by the script
+import os, shutil
+os.makedirs("data", exist_ok=True)
+os.makedirs("outputs", exist_ok=True)
+
+if os.path.exists("patients_ehr.csv"):
+    shutil.copy("patients_ehr.csv", "data/patients_ehr.csv")
+if os.path.exists("wearable_timeseries.csv"):
+    shutil.copy("wearable_timeseries.csv", "data/wearable_timeseries.csv")
+
+# 3. Run the Phase 2 Digital Twin Engine
+!python 2_train_twin_engine.py --data-dir data --output-dir outputs
+"
+
+
+Step 3: Verify the "What-If" Digital Twin Simulation Inside Colab (Cell 2)
+"
+import pickle
+import pandas as pd
+from importlib.machinery import SourceFileLoader
+
+# Load the functions from your script and the trained model bundle
+eng = SourceFileLoader("eng", "2_train_twin_engine.py").load_module()
+with open("outputs/twin_model_bundle.pkl", "rb") as f:
+    bundle = pickle.load(f)
+
+ehr = pd.read_csv("data/patients_ehr.csv", keep_default_na=False, na_values=[''])
+ts = pd.read_csv("data/wearable_timeseries.csv", keep_default_na=False, na_values=[''])
+
+# Select Archetype PT_001 (High Carb Spiker) at Lunch (Index 150: 117.65g High-GI meal)
+pt1_ehr = ehr[ehr.patient_id == "PT_001"].iloc[0]
+pt1_ts = ts[ts.patient_id == "PT_001"].reset_index(drop=True)
+hist_baseline = pt1_ts.iloc[:151].copy()
+
+# 1. Baseline Prediction (No Intervention)
+base_out = eng.predict_latest(bundle, pt1_ehr, hist_baseline)
+
+# 2. Counterfactual "What-If" Intervention (-40g Carbs, Swap to Low GI, +30m Brisk Walk)
+hist_whatif = hist_baseline.copy()
+hist_whatif.loc[hist_whatif.index[-1], "meal_carbs_g"] -= 40.0
+hist_whatif.loc[hist_whatif.index[-1], "meal_gi_tier"] = "Low"
+hist_whatif.loc[hist_whatif.index[-1], "meal_gi"] = 45
+hist_whatif.loc[hist_whatif.index[-2:], "steps_15m"] += 450
+hist_whatif.loc[hist_whatif.index[-2:], "active_kcal_15m"] += 22.0
+
+whatif_out = eng.predict_latest(bundle, pt1_ehr, hist_whatif)
+
+print(f"Current CGM: {hist_baseline.cgm_glucose_mgdl.iloc[-1]} mg/dL")
+print(f"BASELINE (No Action) -> 2h Spike Risk: {base_out['probability']*100:.1f}% | Peak: {max(base_out['trajectory']):.1f} mg/dL")
+print(f"WHAT-IF (Walk+LowGI) -> 2h Spike Risk: {whatif_out['probability']*100:.1f}% | Peak: {max(whatif_out['trajectory']):.1f} mg/dL")
+"
+
+Step 4: How to Run the Phase 3 Doctor Dashboard
+Copy paste in next cell and run it.
+"
+!wget -q https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64 -O cloudflared
+!chmod +x cloudflared
+!streamlit run 3_doctor_dashboard.py &>/dev/null &
+!./cloudflared tunnel --url http://localhost:8501
+"
+
+What to Click Once the Link Appears:
+1. Wait ~5 seconds after running the cell above until you see the box that says:Your quick Tunnel has been created! Visit it at:[https://xxxx-xxxx-xxxx.trycloudflare.com](https://xxxx-xxxx-xxxx.trycloudflare.com)   
+2. Click that [https://...trycloudflare.com](https://...trycloudflare.com) link. (If it says "502 Bad Gateway" on the very first second, just refresh the page once after 5 seconds).   
+3. Your Physician Decision-Support Workspace (3_doctor_dashboard.py) will load with:   
+  - The 4 Archetype Patients (PT_001 to PT_004) in the left sidebar dropdown.   
+  - The 4 Quick-Jump Event Buttons (Meal risk, Dawn, Stress, Sensor fault).   
+  - The What-If Lifestyle Sliders (Brisk walk, Reduce meal carbs, Meal GI scenario, Paced-breathing).   
+  - The Dual-Trajectory Plotly Chart + Exact Grouped Shapley Attribution Bars + Downloadable Clinician Note & Audit Trail.
