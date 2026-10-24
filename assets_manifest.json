@@ -1,0 +1,22 @@
+{
+  "2_train_twin_engine.py": {
+    "bytes": 50624,
+    "sha256": "d0b2a4ab78dd3e441485bc4164cb4fb936d8eeb8b563bb5174d6480e6e5cdce7"
+  },
+  "3_doctor_dashboard.py": {
+    "bytes": 43365,
+    "sha256": "6009814852565261be035af182f1fce36302b5da13901f8411fa5a24b15adcde"
+  },
+  "data/patients_ehr.csv": {
+    "bytes": 4590,
+    "sha256": "fa66d590731ce612d0117d7bbddadd41445f52a96d268bf354e01a4fa2962585"
+  },
+  "data/wearable_timeseries.csv": {
+    "bytes": 6583724,
+    "sha256": "d79e58ac36ea12e53c19e773d2c7a69a04f421e4aa99c2cdb64050f9d8976739"
+  },
+  "models/twin_model_bundle.pkl": {
+    "bytes": 1981795,
+    "sha256": "1c560a001cddfda152484a665ace45fbc122f29980253b7831bb0bfebfa63cce"
+  }
+}
