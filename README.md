@@ -250,7 +250,7 @@ If the dashboard reports a missing file or integrity-check failure, stop and cor
 
 ## 12. Demonstration Video
 
-**Video:** [Replace this text with the public or unlisted YouTube URL]
+**Video:** https://youtu.be/-CQVl9Om9N0 
 
 The completed video should be at least 20 minutes long and demonstrate the project purpose, architecture, synthetic data, training and evaluation, patient selection, forecast display, what-if controls, safety lockout, explanation panel, limitations and actual execution of the prototype.
 
